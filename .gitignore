@@ -4,5 +4,4 @@
 env
 venv
 __pycache__
-configs/client_secret.json
-configs/google_token.json
+configs
