@@ -1,12 +1,13 @@
 import os
 from ai_models.__init__ import prepareDatasetWithoutSystemMessage
-from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-# Loading API Keys
-load_dotenv(dotenv_path="configs/.env")
+# Loading Local API Keys
+# from dotenv import load_dotenv
+# load_dotenv(dotenv_path="configs/.env")
+
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 # output parser

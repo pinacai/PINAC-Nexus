@@ -1,13 +1,15 @@
 import os
 from ai_models.__init__ import prepareDataset
-from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-# Loading API Keys
-load_dotenv(dotenv_path="configs/.env")
+# Loading Local API Keys
+# from dotenv import load_dotenv
+# load_dotenv(dotenv_path="configs/.env")
+
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
 
 # output parser
 output_parser = StrOutputParser()
@@ -19,7 +21,6 @@ TNR_Dataset = prepareDataset("ai_models/dataset/TNR_Dataset.csv")
 
 
 class ChatGPT:
-
     def __init__(self) -> None:
         self.taskClassificationPrompt = ChatPromptTemplate.from_messages(TCC_Dataset)
         self.generalAssistantPrompt = ChatPromptTemplate.from_messages(CAIT_Dataset)
@@ -67,12 +68,9 @@ class ChatGPT:
 
 
 class ChatGPT_3_5:
-
     def __init__(self):
         self.llm = ChatOpenAI(
-            openai_api_key=OPENAI_API_KEY,
-            temperature=0.5,
-            model_name="gpt-3.5-turbo"
+            openai_api_key=OPENAI_API_KEY, temperature=0.5, model_name="gpt-3.5-turbo"
         )
         self.chatGPT = ChatGPT()
         self.chatGPT.chainInitializer(self.llm)
