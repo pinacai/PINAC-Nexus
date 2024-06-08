@@ -32,21 +32,35 @@ class Gemini:
 
     # For classifying the user query into specific task category
     def classifyTaskCategory(self, user_input):
-        response = self.taskClassificationChain.invoke({"text": user_input})
+        try:
+            aiResponse = self.taskClassificationChain.invoke({"text": user_input})
+            response = {"error-occurred": False, "category": aiResponse, "error": None}
+        except Exception as e:
+            response = {"error-occurred": True, "category": None, "error": str(e)}
         return response
 
     # General & specialised task assistance
     def generalAssistant(self, user_input, chatHistory):
-        # Extend the chat prompt with the previous chat history
-        self.generalAssistantPrompt.extend(chatHistory)
-        # Append the current query to the chat prompt
-        self.generalAssistantPrompt.append(user_input) 
-        response = self.generalAssistantChain.invoke({"text": user_input})
+        try:
+            # Extend the chat prompt with the previous chat history
+            self.generalAssistantPrompt.extend(chatHistory)
+            # Append the current query to the chat prompt
+            self.generalAssistantPrompt.append(user_input)
+            aiResponse = self.generalAssistantChain.invoke({"text": user_input})
+            response = {"error-occurred": False, "response": aiResponse, "error": None}
+
+        except Exception as e:
+            response = {"error-occurred": True, "response": None, "error": str(e)}
+
         return response
 
     # For Google contact automation, we need to extract and return names from the query
     def findName(self, user_input):
-        response = self.nameRecognitionChain.invoke({"text": user_input})
+        try:
+            aiResponse = self.nameRecognitionChain.invoke({"text": user_input})
+            response = {"error-occurred": False, "response": aiResponse, "error": None}
+        except Exception as e:
+            response = {"error-occurred": True, "response": None, "error": str(e)}
         return response
 
 

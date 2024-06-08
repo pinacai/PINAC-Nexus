@@ -26,34 +26,54 @@ class ChatGPT:
         self.nameRecognitionPrompt = ChatPromptTemplate.from_messages(TNR_Dataset)
 
     def chainInitializer(self, llm):
-        self.taskClassificationChain = self.taskClassificationPrompt | llm | output_parser
+        self.taskClassificationChain = (
+            self.taskClassificationPrompt | llm | output_parser
+        )
         self.generalAssistantChain = self.generalAssistantPrompt | llm | output_parser
         self.nameRecognitionChain = self.nameRecognitionPrompt | llm | output_parser
 
     # For classifying the user query into specific task category
     def classifyTaskCategory(self, user_input):
-        response = self.taskClassificationChain.invoke({"text": user_input})
+        try:
+            aiResponse = self.taskClassificationChain.invoke({"text": user_input})
+            response = {"error-occurred": False, "category": aiResponse, "error": None}
+        except Exception as e:
+            response = {"error-occurred": True, "category": None, "error": str(e)}
         return response
 
     # General & specialised task assistance
     def generalAssistant(self, user_input, chatHistory):
-        # Extend the chat prompt with the previous chat history
-        self.generalAssistantPrompt.extend(chatHistory)
-        # Append the current query to the chat prompt
-        self.generalAssistantPrompt.append(user_input)
-        response = self.generalAssistantChain.invoke({"text": user_input})
+        try:
+            # Extend the chat prompt with the previous chat history
+            self.generalAssistantPrompt.extend(chatHistory)
+            # Append the current query to the chat prompt
+            self.generalAssistantPrompt.append(user_input)
+            aiResponse = self.generalAssistantChain.invoke({"text": user_input})
+            response = {"error-occurred": False, "response": aiResponse, "error": None}
+
+        except Exception as e:
+            response = {"error-occurred": True, "response": None, "error": str(e)}
+
         return response
 
     # For Google contact automation, we need to extract and return names from the query
     def findName(self, user_input):
-        response = self.nameRecognitionChain.invoke({"text": user_input})
+        try:
+            aiResponse = self.nameRecognitionChain.invoke({"text": user_input})
+            response = {"error-occurred": False, "response": aiResponse, "error": None}
+        except Exception as e:
+            response = {"error-occurred": True, "response": None, "error": str(e)}
         return response
 
 
 class ChatGPT_3_5:
 
     def __init__(self):
-        self.llm = ChatOpenAI(openai_api_key=OPENAI_API_KEY, temperature=0.5, model_name="gpt-3.5-turbo")
+        self.llm = ChatOpenAI(
+            openai_api_key=OPENAI_API_KEY,
+            temperature=0.5,
+            model_name="gpt-3.5-turbo"
+        )
         self.chatGPT = ChatGPT()
         self.chatGPT.chainInitializer(self.llm)
 

@@ -77,34 +77,36 @@ class GoogleGmailManager:
         Returns:
             A dictionary containing the draft information.
         """
-        message = MIMEMultipart()
-        message["to"] = recipient_email
-        message["subject"] = subject
+        try:
+            message = MIMEMultipart()
+            message["to"] = recipient_email
+            message["subject"] = subject
 
-        text_part = MIMEText(body)
-        message.attach(text_part)
+            text_part = MIMEText(body)
+            message.attach(text_part)
 
-        if attachment:
-            with open(attachment, "rb") as f:
-                content = f.read()
-            filename = os.path.basename(attachment)
-            content_type = os.path.splitext(attachment)[1]
-            attachment_part = MIMEApplication(content, content_type)
-            attachment_part.add_header(
-                "Content-Disposition", "attachment; filename={}".format(filename)
-            )
-            message.attach(attachment_part)
+            if attachment:
+                with open(attachment, "rb") as f:
+                    content = f.read()
+                filename = os.path.basename(attachment)
+                content_type = os.path.splitext(attachment)[1]
+                attachment_part = MIMEApplication(content, content_type)
+                attachment_part.add_header(
+                    "Content-Disposition", "attachment; filename={}".format(filename)
+                )
+                message.attach(attachment_part)
 
-        encoded_message = base64.urlsafe_b64encode(
-            message.as_string().encode("utf-8")
-        ).decode()
-        draft = (
-            self.service.users()
-            .drafts()
-            .create(userId="me", body={"message": {"raw": encoded_message}})
-            .execute()
-        )
-        return draft
+            encoded_message = base64.urlsafe_b64encode(
+                message.as_string().encode("utf-8")
+            ).decode()
+            self.service.users().drafts().create(
+                userId="me", body={"message": {"raw": encoded_message}}
+            ).execute()
+
+            return {"error-occurred": False, "response": True, "error": None}
+
+        except Exception as e:
+            return {"error-occurred": True, "response": False, "error": str(e)}
 
     # for sending email with above created msg
     def sendEmail(self, recipient_email, subject, body, attachment=None):
@@ -133,9 +135,11 @@ class GoogleGmailManager:
             self.service.users().messages().send(
                 userId="me", body={"raw": message_encoded}
             ).execute()
-            return True
+
+            return {"error-occurred": False, "response": True, "error": None}
 
         except Exception as e:
-            return e
+            return {"error-occurred": True, "response": False, "error": str(e)}
+
 
     #  (PART 2)---> FOR FETCHING EMAILS AND EMAILS DATA

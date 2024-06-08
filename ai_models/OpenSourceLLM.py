@@ -89,8 +89,3 @@ class Llama_8b:
 
     def findName(self, user_input):
         return self.llama_8b.findName(user_input)
-
-
-ll = Gemma_2b()
-res = ll.classifyTaskCategory("Hello there, how are you ?")
-print(res)
