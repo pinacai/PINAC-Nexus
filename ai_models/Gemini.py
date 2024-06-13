@@ -5,9 +5,8 @@ from langchain.prompts.chat import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 # Loading Local API Keys
-# from dotenv import load_dotenv
-# load_dotenv(dotenv_path="configs/.env")
-
+from dotenv import load_dotenv
+load_dotenv(dotenv_path="configs/.env")
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 # output parser
@@ -111,27 +110,6 @@ class Gemini_1_5_Flash:
 
     def __init__(self):
         self.llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", api_key=GOOGLE_API_KEY)
-        self.Gemini = Gemini()
-        self.Gemini.chainInitializer(self.llm)
-
-    def classifyTaskCategory(self, user_input):
-        return self.Gemini.classifyTaskCategory(user_input)
-
-    def generalAssistant(self, user_input, chatHistory):
-        return self.Gemini.generalAssistant(user_input, chatHistory)
-
-    def findName(self, user_input):
-        return self.Gemini.findName(user_input)
-
-
-
-# Text, Img & Video Input
-# >>>   Expert in Vision: Visual-related tasks, like generating image descriptions or identifying objects in images
-#       ----------------
-class Gemini_Pro_Vision:
-
-    def __init__(self):
-        self.llm = ChatGoogleGenerativeAI(model="gemini-pro-vision", api_key=GOOGLE_API_KEY)
         self.Gemini = Gemini()
         self.Gemini.chainInitializer(self.llm)
 
