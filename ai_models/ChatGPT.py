@@ -36,9 +36,9 @@ class ChatGPT:
     def classifyTaskCategory(self, user_input):
         try:
             aiResponse = self.taskClassificationChain.invoke({"text": user_input})
-            response = {"error-occurred": False, "category": aiResponse, "error": None}
+            response = {"error_occurred": False, "category": aiResponse, "error": None}
         except Exception as e:
-            response = {"error-occurred": True, "category": None, "error": str(e)}
+            response = {"error_occurred": True, "category": None, "error": str(e)}
         return response
 
     # General & specialised task assistance
@@ -49,10 +49,10 @@ class ChatGPT:
             # Append the current query to the chat prompt
             self.generalAssistantPrompt.append(user_input)
             aiResponse = self.generalAssistantChain.invoke({"text": user_input})
-            response = {"error-occurred": False, "response": aiResponse, "error": None}
+            response = {"error_occurred": False, "response": aiResponse, "error": None}
 
         except Exception as e:
-            response = {"error-occurred": True, "response": None, "error": str(e)}
+            response = {"error_occurred": True, "response": None, "error": str(e)}
 
         return response
 
@@ -60,9 +60,9 @@ class ChatGPT:
     def findName(self, user_input):
         try:
             aiResponse = self.nameRecognitionChain.invoke({"text": user_input})
-            response = {"error-occurred": False, "response": aiResponse, "error": None}
+            response = {"error_occurred": False, "response": aiResponse, "error": None}
         except Exception as e:
-            response = {"error-occurred": True, "response": None, "error": str(e)}
+            response = {"error_occurred": True, "response": None, "error": str(e)}
         return response
 
 

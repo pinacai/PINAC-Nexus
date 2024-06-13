@@ -103,10 +103,10 @@ class GoogleGmailManager:
                 userId="me", body={"message": {"raw": encoded_message}}
             ).execute()
 
-            return {"error-occurred": False, "response": True, "error": None}
+            return {"error_occurred": False, "response": True, "error": None}
 
         except Exception as e:
-            return {"error-occurred": True, "response": False, "error": str(e)}
+            return {"error_occurred": True, "response": False, "error": str(e)}
 
     # for sending email with above created msg
     def sendEmail(self, recipient_email, subject, body, attachment=None):
@@ -136,10 +136,10 @@ class GoogleGmailManager:
                 userId="me", body={"raw": message_encoded}
             ).execute()
 
-            return {"error-occurred": False, "response": True, "error": None}
+            return {"error_occurred": False, "response": True, "error": None}
 
         except Exception as e:
-            return {"error-occurred": True, "response": False, "error": str(e)}
+            return {"error_occurred": True, "response": False, "error": str(e)}
 
 
     #  (PART 2)---> FOR FETCHING EMAILS AND EMAILS DATA

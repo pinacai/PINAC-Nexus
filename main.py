@@ -116,19 +116,18 @@ def giveAiResponseArray(AiModel, query):
     chatHistory.append(HumanMessage(content=query))
     ai_response = AiModel.classifyTaskCategory(query)
 
-    if not ai_response["error-occurred"]:
-
+    if not ai_response["error_occurred"]:
         if ai_response["category"] == "compose formal email":
             email_template = AiModel.generalAssistant(query, chatHistory)
 
-            if not email_template["error-occurred"]:
+            if not email_template["error_occurred"]:
                 body, subject = decodeEmail(email_template["response"])
                 response = {
-                    "error-occurred": False,
+                    "error_occurred": False,
                     "response": {
                         "type": "email",
-                        "email-subject": subject,
-                        "email-body": body,
+                        "email_subject": subject,
+                        "email_body": body,
                     },
                     "error": None,
                 }
@@ -139,14 +138,14 @@ def giveAiResponseArray(AiModel, query):
         elif ai_response["category"] == "compose informal email":
             email_template = AiModel.generalAssistant(query, chatHistory)
 
-            if not email_template["error-occurred"]:
+            if not email_template["error_occurred"]:
                 body, subject = decodeEmail(email_template["response"])
                 response = {
-                    "error-occurred": False,
+                    "error_occurred": False,
                     "response": {
                         "type": "email",
-                        "email-subject": subject,
-                        "email-body": body,
+                        "email_subject": subject,
+                        "email_body": body,
                     },
                     "error": None,
                 }
@@ -225,9 +224,9 @@ def giveAiResponseArray(AiModel, query):
 
         else:
             ai_response = AiModel.generalAssistant(query, chatHistory)
-            if not ai_response["error-occurred"]:
+            if not ai_response["error_occurred"]:
                 response = {
-                    "error-occurred": False,
+                    "error_occurred": False,
                     "response": {"type": "others", "content": ai_response["response"]},
                     "error": None,
                 }
@@ -242,68 +241,56 @@ def giveAiResponseArray(AiModel, query):
 
 
 def processClientRequest(request: dict):
+    if request["request_type"] == "user-input":
+        if request["preferred_model"] == "ChatGPT-3.5 turbo":
+            response = giveAiResponseArray(chatgpt_3_5, request["user_query"])
+        elif request["preferred_model"] == "Gemini 1.5 Pro":
+            response = giveAiResponseArray(gemini_1_5_pro, request["user_query"])
+        elif request["preferred_model"] == "Gemini 1.0 Pro":
+            response = giveAiResponseArray(gemini_1_pro, request["user_query"])
+        elif request["preferred_model"] == "Gemini Flash 1.5":
+            response = giveAiResponseArray(gemini_1_5_flash, request["user_query"])
 
-    if request["request-type"] == "user-input":
-        if request["preferred-model"] == "ChatGPT-3.5 turbo":
-            response = giveAiResponseArray(chatgpt_3_5, request["user-query"])
-        elif request["preferred-model"] == "Gemini 1.5 Pro":
-            response = giveAiResponseArray(gemini_1_5_pro, request["user-query"])
-        elif request["preferred-model"] == "Gemini 1.0 Pro":
-            response = giveAiResponseArray(gemini_1_pro, request["user-query"])
-        elif request["preferred-model"] == "Gemini Flash 1.5":
-            response = giveAiResponseArray(gemini_1_5_flash, request["user-query"])
-
-    elif request["request-type"] == "clear-history":
-        clearHistory()
-        response = {
-            "error-occurred": False,
-            "response": True,
-            "error": None,
-        }
-
-    # elif request["request-type"] == "send-email":
-    #     if validateEmail(request["recipient-email"]):
+    # elif request["request_type"] == "send-email":
+    #     if validateEmail(request["recipient_email"]):
     #         response = sendInstantEmail(
-    #             recipient_email=request["recipient-email"],
-    #             subject=request["email-subject"],
-    #             body=request["email-body"],
+    #             recipient_email=request["recipient_email"],
+    #             subject=request["email_subject"],
+    #             body=request["email_body"],
     #         )
     #     else:
     #         response = {
-    #             "error-occurred": True,
+    #             "error_occurred": True,
     #             "response": False,
     #             "error": "Invalid email id",
     #         }
 
-    # elif (
-    #     request["request-type"] == "create-draft"
-    #     and request["have-recipient-email"] == "yes"
-    # ):
-    #     if validateEmail(request["recipient-email"]):
+    # elif request["request_type"] == "create-draft" and request["have_recipient_email"]:
+    #     if validateEmail(request["recipient_email"]):
     #         response = createDraftEmail(
-    #             recipient_email=request["recipient-email"],
-    #             subject=["email-subject"],
-    #             body=request["email-body"],
+    #             recipient_email=request["recipient_email"],
+    #             subject=["email_subject"],
+    #             body=request["email_body"],
     #         )
 
     #     else:
     #         response = {
-    #             "error-occurred": True,
+    #             "error_occurred": True,
     #             "response": False,
     #             "error": "Invalid email id",
     #         }
 
     # elif (
-    #     request["request-type"] == "create-draft"
-    #     and request["have-recipient-email"] == "no"
+    #     request["request_type"] == "create-draft"
+    #     and request["have_recipient_email"] == "no"
     # ):
     #     response = createDraftEmail(
-    #         subject=request["email-subject"], body=request["email-body"]
+    #         subject=request["email_subject"], body=request["email_body"]
     #     )
 
     else:
         response = {
-            "error-occurred": True,
+            "error_occurred": True,
             "response": None,
             "error": "Got unknown 'request-type'",
         }
