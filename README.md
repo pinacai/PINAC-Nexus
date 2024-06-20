@@ -24,21 +24,17 @@ Follow these few steps to set up the server for **PINAC Workspace** on your syst
 ### Prerequisites
 - _Python_
 - _OPENAI API Key_ & _GEMINI API KEY_
-    > **NOTE**: If you have only either OPENAI KEY or GEMINI KEY, then you just need to do some change in `main.py` and it's easy.
+    > **NOTE**: If you have only either OPENAI or GEMINI KEY, then you just need to do some change in `main.py` and it's easy.
 - _Internet Connection_
 
 1. Clone the Repository
     ```bash
-    git clone https://github.com/pinacai/PINAC-Nexus.git
-    cd "PINAC-Nexus"
+    git clone https://github.com/pinacai/PINAC-Nexus.git && cd "PINAC-Nexus"
     ```
 
 2. Create virtualenv & activate it
     ```bash
-    python -m venv env
-    ```
-    ```bash
-    source env/bin/activate
+    python -m venv env && source env/bin/activate
     ```
 
 3. Install python dependencies
@@ -53,4 +49,4 @@ Follow these few steps to set up the server for **PINAC Workspace** on your syst
     GOOGLE_API_KEY = "<Place your GEMINI API Key here>"
     ```
 
-5. Run the main.py file.
+5. Run the `main.py` file.
