@@ -3,6 +3,7 @@ from flask_socketio import SocketIO
 from functools import cache
 from ai_models.ChatGPT import ChatGPT_3_5
 from ai_models.Gemini import Gemini_1_5_Pro, Gemini_1_Pro, Gemini_1_5_Flash
+from prompts.prompt import givePrompt
 from langchain.schema import HumanMessage, AIMessage
 
 # import datetime
@@ -46,17 +47,17 @@ gemini_1_5_flash = Gemini_1_5_Flash()
 #         return gmail.createDraft(body=body, subject=subject)
 
 
-# Function to decode the email body and subject from the raw email text
-def decodeEmail(text):
-    lines = text.split("\n")
-    subject_index = next(
-        (i for i, line in enumerate(lines) if "Subject:" in line), None
-    )
-    body = "\n".join(lines[subject_index + 2 :]) if subject_index is not None else text
-    subject = next(
-        (line.replace("Subject: ", "") for line in lines if "Subject" in line), None
-    )
-    return body, subject
+# # Function to decode the email body and subject from the raw email text
+# def decodeEmail(text):
+#     lines = text.split("\n")
+#     subject_index = next(
+#         (i for i, line in enumerate(lines) if "Subject:" in line), None
+#     )
+#     body = "\n".join(lines[subject_index + 2 :]) if subject_index is not None else text
+#     subject = next(
+#         (line.replace("Subject: ", "") for line in lines if "Subject" in line), None
+#     )
+#     return body, subject
 
 
 # # Function to get the ordinal suffix for a day number (e.g., 1st, 2nd, 3rd, 4th)
@@ -111,47 +112,51 @@ def clearHistory():
     chatHistory.clear()
 
 
+def createResponse(AiModel, query, prompt_name, response_type):
+    # gets the required prompt
+    prompt = givePrompt(prompt_name, query)
+    ai_response = AiModel.generalAssistant(prompt, chatHistory)
+    if not ai_response["error_occurred"]:
+        # chatHistory.append(AIMessage(content=ai_response))
+        return {
+            "error_occurred": False,
+            "response": {
+                "type": response_type,
+                "content": ai_response["response"],
+            },
+            "error": None,
+        }
+    else:
+        return ai_response
+
+
 @cache
 def giveAiResponseArray(AiModel, query):
     chatHistory.append(HumanMessage(content=query))
     ai_response = AiModel.classifyTaskCategory(query)
 
     if not ai_response["error_occurred"]:
-        if ai_response["category"] == "compose formal email":
-            email_template = AiModel.generalAssistant(query, chatHistory)
+        #
+        #
+        if ai_response["category"] == "compose complaint email":
+            response = createResponse(AiModel, query, "complaint email", "email")
 
-            if not email_template["error_occurred"]:
-                body, subject = decodeEmail(email_template["response"])
-                response = {
-                    "error_occurred": False,
-                    "response": {
-                        "type": "email",
-                        "email_subject": subject,
-                        "email_body": body,
-                    },
-                    "error": None,
-                }
-                chatHistory.append(AIMessage(content=email_template["response"]))
-            else:
-                response = email_template
+        elif ai_response["category"] == "compose formal request email":
+            response = createResponse(AiModel, query, "formal request email", "email")
+
+        elif ai_response["category"] == "compose inquiry email":
+            response = createResponse(AiModel, query, "inquiry email", "email")
+
+        elif ai_response["category"] == "compose formal proposal or suggestion email":
+            response = createResponse(
+                AiModel, query, "formal proposal or suggestion email", "email"
+            )
+
+        elif ai_response["category"] == "compose acknowledgment email":
+            response = createResponse(AiModel, query, "acknowledgment email", "email")
 
         elif ai_response["category"] == "compose informal email":
-            email_template = AiModel.generalAssistant(query, chatHistory)
-
-            if not email_template["error_occurred"]:
-                body, subject = decodeEmail(email_template["response"])
-                response = {
-                    "error_occurred": False,
-                    "response": {
-                        "type": "email",
-                        "email_subject": subject,
-                        "email_body": body,
-                    },
-                    "error": None,
-                }
-                chatHistory.append(AIMessage(content=email_template["response"]))
-            else:
-                response = email_template
+            response = createResponse(AiModel, query, "informal email", "email")
 
         # elif "show calendar" in ai_response:
         # calendar = GoogleCalendarManager()
@@ -223,19 +228,10 @@ def giveAiResponseArray(AiModel, query):
         #     chatHistory.append(AIMessage(content=text))
 
         else:
-            ai_response = AiModel.generalAssistant(query, chatHistory)
-            if not ai_response["error_occurred"]:
-                response = {
-                    "error_occurred": False,
-                    "response": {"type": "others", "content": ai_response["response"]},
-                    "error": None,
-                }
-                chatHistory.append(AIMessage(content=ai_response["response"]))
-            else:
-                response = ai_response
+            response = createResponse(AiModel, query, "others", "others")
 
     else:
-        response = {}
+        response = ai_response
 
     return response
 

@@ -183,7 +183,7 @@ HumanMessage,Write a high quality professional email on my concern about Insuffi
 AIMessage,compose inquiry email
 HumanMessage,Pinac generate a acknowledgment email on concern about Outdated IT Infrastructure: Our company's computer systems and software are starting to show their age and we're concerned about potential security vulnerabilities and decreased productivity. We'd like to schedule a meeting to discuss upgrading our IT infrastructure to ensure we're using the latest technology to support our growing business needs.
 AIMessage,compose inquiry email
-HumanMessage,Compose a Request email for Improved Office Recycling Program: Our current recycling efforts in the office are lacking, and we'd like to implement a more comprehensive program to reduce waste and promote sustainability. Could you provide information on the best practices for office recycling and any resources or services we could utilize to enhance our environmental initiatives?
+HumanMessage,Compose a Request email for Improved Office Recycling Program: Our current recycling efforts in the office are lacking and we'd like to implement a more comprehensive program to reduce waste and promote sustainability. Could you provide information on the best practices for office recycling and any resources or services we could utilize to enhance our environmental initiatives?
 AIMessage,compose inquiry email
 ,
 ,
@@ -485,7 +485,7 @@ HumanMessage,give me mobile no. of my love
 AIMessage,show contact
 HumanMessage,pinac tell me phone no. of driver
 AIMessage,show contact
-HumanMessage,Search for [Emma's phone number in your records.
+HumanMessage,Search for Emma's phone number in your records.
 AIMessage,show contact
 HumanMessage,AI retrieve the phone number for Rohan.
 AIMessage,show contact

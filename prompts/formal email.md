@@ -35,4 +35,4 @@ Using the above as a starting point, craft a professional, formal email that adh
 
 13. Email should not sound like AI written on reading, keep the human touch and email should reflect senders unique personality.
 
-Generate a polished, professional email that fulfills the user's intent while elevating the quality and effectiveness of the communication."
+Generate a polished, professional email that fulfills the user's intent while elevating the quality and effectiveness of the communication.

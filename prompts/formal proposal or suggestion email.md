@@ -1,6 +1,6 @@
 Craft a professional and compelling formal proposal or suggestion email based on the following user input:
 
-[USER'S ORIGINAL PROMPT]
+**[USER'S ORIGINAL PROMPT]**
 
 Enhance and expand upon the user's request to create an effective proposal or suggestion email that adheres to these guidelines:
 
