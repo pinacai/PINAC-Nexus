@@ -3,5 +3,8 @@
 .venv
 env
 venv
+test_field.txt
+test_field.py
+test_field.csv
 __pycache__
 configs
