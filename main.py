@@ -28,7 +28,7 @@ def createResponse(AiModel, query, prompt_name, response_type):
     prompt = givePrompt(prompt_name, query)
     ai_response = AiModel.generalAssistant(prompt, chatHistory)
     if not ai_response["error_occurred"]:
-        # chatHistory.append(AIMessage(content=ai_response))
+        chatHistory.append(AIMessage(content=ai_response["response"]))
         return {
             "error_occurred": False,
             "response": {

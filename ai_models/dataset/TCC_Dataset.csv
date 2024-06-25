@@ -1,5 +1,5 @@
 type,content
-SystemMessage,Your only task is to classify the user query only within specific mentioned categories. When user will ask you a query; classify the query only within the list of categories of orders: [general conversation] [compose business(B2B and B2Employee and B2Investor) email] [compose proposal submission email] [compose complaint email] [compose welcome email] [compose announcement email] [compose inquiry email] [compose confirmation email] [compose resignation email] [compose acknowledgment email] [compose thank you email] [compose acceptance email] [compose other formal email] [compose informal email] [show calendar] [summarise schedule] [summarise schedule -today] [summarise schedule -tomorrow] [show contact] [write code] [explain code] [improve writing] [improve academic writing] [write essay] [write micro essay] [summarize] [summarize in micro] [summarize document] [extract questions] [write business(B2B and B2Employee and B2Investor) letter] [write proposal submission letter] [write complaint letter] [write welcome letter] [write announcement letter] [write inquiry letter] [write confirmation letter] [write resignation letter] [others]
+SystemMessage,Your only task is to classify the user query only within specific mentioned categories. When user will ask you a query; classify the query only within the list of categories of orders: [general conversation] [compose business(B2B and B2Employee and B2Investor) email] [compose proposal submission email] [compose complaint email] [compose welcome email] [compose announcement email] [compose inquiry email] [compose confirmation email] [compose resignation email] [compose acknowledgment email] [compose thank you email] [compose acceptance email] [compose apology email] [compose congratulation email] [compose academic email] [compose recommendation email] [compose other formal email] [compose informal email] [show calendar] [summarise schedule] [summarise schedule -today] [summarise schedule -tomorrow] [show contact] [write code] [explain code] [improve writing] [improve academic writing] [write essay] [write micro essay] [summarize] [summarize in micro] [summarize document] [extract questions] [write business(B2B and B2Employee and B2Investor) letter] [write proposal submission letter] [write complaint letter] [write welcome letter] [write announcement letter] [write inquiry letter] [write confirmation letter] [write resignation letter] [write acknowledgment letter] [write thank you letter] [write acceptance letter] [write apology letter] [write congratulation letter] [write academic letter] [write recommendation letter] [write invitation] [others]
 SystemMessage,Below are the examples of how you have to ans to user's query
 ,
 ,
@@ -319,6 +319,12 @@ HumanMessage,Write Email for Confirming the Volunteer Placement: Thanking an ind
 AIMessage,compose confirmation email
 HumanMessage,Write a email on theme of: "Confirmation of Warranty Registration: Acknowledging the registration of a product warranty; including the warranty details; coverage period and instructions for future claims or service requests"
 AIMessage,compose confirmation email
+HumanMessage,Acknowledgement email of Job Application: Confirming receipt of a job application; expressing appreciation for the candidate's interest and outlining the next steps in the selection process.
+AIMessage,compose confirmation email
+HumanMessage,Email for Acknowledging receipt of a meeting request. Confirming availability and proposing potential dates and times for the meeting.
+AIMessage,compose confirmation email
+HumanMessage,Hi Pinac; generate a quick email on "Acknowledgement of Event RSVP: Confirming a guest's RSVP to an event & providing event details and expressing excitement for their attendance."
+AIMessage,compose confirmation email
 ,
 ,
 ,
@@ -351,6 +357,10 @@ HumanMessage,Acknowledgement email of Received Proposal: We are writing to ackno
 AIMessage,compose acknowledgment email
 HumanMessage,We are writing polite email to acknowledge receipt of your inquiry regarding [Topic of Inquiry]. Our team is reviewing the details and we will be in touch with you as soon as possible to address your questions or concerns. Thank you for reaching out to us and we appreciate your patience.
 AIMessage,compose acknowledgment email
+HumanMessage,Write a quick email on "Acknowledgement of Customer Inquiry: Notifying a customer that their inquiry has been received; assuring them that their concerns are being addressed and providing an estimated timeline for resolution."
+AIMessage,compose acknowledgment email
+HumanMessage,Acknowledgement Email of Appreciation: Acknowledging a message of appreciation or gratitude received from a customer; client or colleague; expressing thanks for the kind words and reaffirming commitment to excellent service.
+AIMessage,compose acknowledgment email
 ,
 ,
 ,
@@ -360,6 +370,14 @@ HumanMessage,Acknowledgement email of Received Donation: We are writing to ackno
 AIMessage,compose thank you email
 HumanMessage,email for telling "Thank you for your recent order with [Company Name]. We have received your order for [Product/Service Description] and are processing it now. You can expect your order to be shipped within the next [X] business days. Please let us know if you have any other questions or concerns".
 AIMessage,compose thank you email
+HumanMessage,Acknowledgement Email For Donation: Thanking a donor for their generous contribution. Recognizing the impact of their donation and providing information on how the donation will be used.
+AIMessage,compose thank you email
+HumanMessage,Generate a very shot email for saying "Thank You for Attending Our Event: Expressing gratitude to attendees for participating in a company event acknowledging their presence and highlighting key moments from the event that made it successful."
+AIMessage,compose thank you email
+HumanMessage,Formal email for thanking all job applicants for their interest in a position acknowledging the time and effort put into the application and informing them about the next steps in the hiring process.
+AIMessage,compose thank you email
+HumanMessage,Personalized email for thanking customers for making a purchase expressing appreciation for their business and offering assistance with any post-purchase inquiries or feedback.
+AIMessage,compose thank you email
 ,
 ,
 ,
@@ -367,6 +385,88 @@ HumanMessage,Write a email for saying "We have received your resignation letter 
 AIMessage,compose acceptance email
 HumanMessage,generate a email of acknowledgement in reply of the Received Invitation: Thank you for the invitation to [Event Name] on [Date]. We have received your invitation and are reviewing the details. We look forward to the opportunity to attend and [Describe Anticipated Participation]. Please let us know if you require any additional information from us.
 AIMessage,compose acceptance email
+HumanMessage,I an accepting a job offer. Expressing excitement about joining the company; thanking the hiring manager for the opportunity and confirming the start date; salary and any other details. in the email. Write it for me.
+AIMessage,compose acceptance email
+HumanMessage,make a draft email. Confirming the acceptance of a conference proposal through the email; thanking the organizers for their decision and providing any additional information needed for the presentation or workshop.
+AIMessage,compose acceptance email
+HumanMessage,Write a professional looking email on: Acceptance of Scholarship Award: Acknowledging acceptance of a scholarship award; expressing gratitude for the financial support and confirming the terms and conditions of the award.
+AIMessage,compose acceptance email
+HumanMessage,Email for Acceptance of Membership Application: "Welcoming a new member to the organization confirming their acceptance and providing details on membership benefits & upcoming events and resources".
+AIMessage,compose acceptance email
+HumanMessage,Generate a Beautiful Professional looking Email of Acceptance of Research Collaboration: Acknowledging acceptance of a research collaboration proposal expressing enthusiasm for the project and outlining the next steps in the research process including timelines and communication channels.
+AIMessage,compose acceptance email
+HumanMessage,Write a straight forward email on "Acceptance of Speaking Engagement. Confirming acceptance of a speaking engagement. Thanking the organizers for the invitation and providing any necessary information regarding the presentation topic and format and logistics."
+AIMessage,compose acceptance email
+,
+,
+,
+HumanMessage,Show me a formal email for apologizing for a delayed order due to unforeseen circumstances offering a discount or expedited shipping and assuring the customer of their commitment to timely delivery.
+AIMessage,compose apology email
+HumanMessage,Write a email with subject "Incorrect Order Fulfillment". Content topic is "Apologizing for sending the wrong item; offering a full refund or replacement and expressing regret for the inconvenience caused"
+AIMessage,compose apology email
+HumanMessage,Apologizing for a damaged product received by a customer through email; offering a replacement or refund and outlining the steps taken to prevent similar occurrences.
+AIMessage,compose apology email
+HumanMessage,email for strongly apologizing for a negative interaction with a customer service representative offering a discount or compensation for the inconvenience and assuring the customer of their commitment to professional service.
+AIMessage,compose apology email
+HumanMessage,Generate a email on "Website Technical Issue: Apologizing for a technical issue on the website that prevented a customer from completing a purchase; offering a discount or gift card for their next purchase and assuring them that the issue is being addressed"
+AIMessage,compose apology email
+HumanMessage,Give me a Apology email for missing an important meeting due to a scheduling conflict or unforeseen circumstances; offering to reschedule and expressing regret for any inconvenience caused.
+AIMessage,compose apology email
+HumanMessage,email for: Missed Deadline. Apologizing for failing to meet a deadline explaining the reasons for the delay and outlining the steps being taken to ensure timely completion of future tasks.
+AIMessage,compose apology email
+HumanMessage,A quick apology email for a communication breakdown that led to a misunderstanding or conflict acknowledging the importance of clear communication and assuring the recipient of your commitment to effective communication in the future.
+AIMessage,compose apology email
+HumanMessage,Apology email for unprofessional behavior at work acknowledging the impact of your actions and assuring your colleagues of your commitment to maintaining a professional demeanor.
+AIMessage,compose apology email
+HumanMessage,Apologizing for having to cancel plans at the last minute explaining the reason for the cancellation and offering to reschedule at a later date through a simple formal email.
+AIMessage,compose apology email
+,
+,
+,
+HumanMessage,Draft a email on Graduation Congratulations: Congratulations on your recent graduation from Oakwood University! Your hard work and dedication have paid off and we are proud to see you reach this milestone. We wish you all the best in your future endeavors.
+AIMessage,compose congratulation email
+HumanMessage,Congratulation email to My Best Friend: Congratulations on your well-deserved promotion to the position of Marketing Manager at ABC Corporation. Your exceptional performance and contributions to the team have not gone unnoticed and we are confident in your ability to excel in this new role.
+AIMessage,compose congratulation email
+HumanMessage,email for Congratulations on the successful expansion of your small business; Rosewood Boutique. Your entrepreneurial spirit and commitment to providing exceptional customer service have truly paid off. We wish you continued success in this new chapter.
+AIMessage,compose congratulation email
+HumanMessage,email for Retirement: Congratulations on your retirement after 35 years of dedicated service at XYZ Company. You have left an indelible mark on the organization and your colleagues will miss your expertise and leadership. Enjoy this well-deserved next phase of your life.
+AIMessage,compose congratulation email
+HumanMessage,email on Marriage: Congratulations to the newlyweds; Sarah and Michael Thompson! We are overjoyed to celebrate your union and wish you a lifetime of love and happiness and adventure together.
+AIMessage,compose congratulation email
+,
+,
+,
+HumanMessage,Write down email of Intent: Outline the applicant's academic and professional goals; their motivation for pursuing a particular program and how their background and experiences make them a strong candidate.
+AIMessage,compose academic email
+HumanMessage,Write email to Request a deferral of admission to a program providing a valid explanation and a proposed timeline for when the applicant plans to enroll.
+AIMessage,compose academic email
+HumanMessage,Write down a Professional email to Inform the institution of the applicant's decision to withdraw from a program and provide any necessary details or explanations.
+AIMessage,compose academic email
+HumanMessage,Write a email for me on "email of Appeal: Request a reconsideration of a decision; such as a denial of admission or a grade dispute and present a compelling case for why the decision should be reconsidered."
+AIMessage,compose academic email
+HumanMessage,Generate a email for me: "email of Grievance: Address a specific issue or concern within the academic environment such as a conflict with a professor or a perceived unfair policy and request a resolution."
+AIMessage,compose academic email
+HumanMessage,Give me a email on: "email of Nomination: Nominate a student and faculty member or program for an academic award or recognition. Highlighting their achievements and contributions"
+AIMessage,compose academic email
+HumanMessage,email of Endorsement: Provide a strong endorsement for a student; colleague or program; emphasizing their qualifications and the reasons why they deserve support or consideration.
+AIMessage,compose academic email
+HumanMessage,email of Condolence: Offer condolences and support to a member of the academic community who has experienced a personal loss or tragedy.
+AIMessage,compose academic email
+,
+,
+,
+HumanMessage,email of Recommendation for Professional Development Opportunity: Support a faculty member's or staff member's application for a professional development program such as a workshop-conference or training; emphasizing the potential benefits to their growth and the institution.
+AIMessage,compose recommendation email
+HumanMessage,email of Recommendation for Academic Award or Honor: Highlight a student's or colleague's exceptional achievements; recognizing their dedication; intellectual abilities and the impact of their work.
+AIMessage,compose recommendation email
+HumanMessage,email for Recommending myself for Internship or Co-op Program: Vouch for a student's readiness and enthusiasm for a specific internship or co-op opportunity emphasizing their relevant skills and experiences.
+AIMessage,compose recommendation email
+HumanMessage,Recommending for Student Leadership Position: Highlight a student's leadership skills; initiative and commitment to the academic community; supporting their application for a student government or club leadership role. Draft a beautifull email for it!
+AIMessage,compose recommendation email
+HumanMessage,email of Recommendation for Graduate School Admission: Provide a detailed evaluation of a student's academic performance & research experience and personal qualities that make them a strong candidate for a graduate program
+AIMessage,compose recommendation email
+HumanMessage,email of Recommendation for Tenure: Provide a comprehensive evaluation of a faculty member's teaching; research and service contributions supporting their case for tenure.
+AIMessage,compose recommendation email
 ,
 ,
 ,
@@ -1206,3 +1306,144 @@ AIMessage,write resignation letter
 ,
 ,
 ,
+HumanMessage,As the IT Security Officer I need to write an letter to all staff about a recent IT security incident detailing the event and advising on precautionary measures to prevent future occurrences
+AIMessage,write acknowledgment letter
+HumanMessage,Create a professional letter to the district attorney’s office providing details about a potential case of fraud.
+AIMessage,write acknowledgment letter
+HumanMessage,Construct an letter to the environmental protection agency highlighting concerns about water quality in a nearby river
+AIMessage,write acknowledgment letter
+HumanMessage,Write a formal letter to the school principal expressing interest in organizing a career guidance seminar for students
+AIMessage,write acknowledgment letter
+HumanMessage,compose a acknowledgement in polite and professional tone of Received Job Application: Thank you for submitting your application for the [Job Title] position at [Company Name]. We have received your materials and will be reviewing all applications carefully. We appreciate your interest in joining our team and will be in touch with you regarding the next steps in the hiring process.
+AIMessage,write acknowledgment letter
+HumanMessage,Acknowledgement letter of Received Proposal: We are writing to acknowledge receipt of your proposal for the [Project Name] project. Our team is currently reviewing the details and we will be in touch with you shortly to discuss next steps. Thank you for taking the time to submit your proposal and we look forward to the opportunity to work with your company.
+AIMessage,write acknowledgment letter
+HumanMessage,We are writing polite letter to acknowledge receipt of your inquiry regarding [Topic of Inquiry]. Our team is reviewing the details and we will be in touch with you as soon as possible to address your questions or concerns. Thank you for reaching out to us and we appreciate your patience.
+AIMessage,write acknowledgment letter
+HumanMessage,Write a quick letter on "Acknowledgement of Customer Inquiry: Notifying a customer that their inquiry has been received; assuring them that their concerns are being addressed and providing an estimated timeline for resolution."
+AIMessage,write acknowledgment letter
+HumanMessage,Acknowledgement letter of Appreciation: Acknowledging a message of appreciation or gratitude received from a customer; client or colleague; expressing thanks for the kind words and reaffirming commitment to excellent service.
+AIMessage,write acknowledgment letter
+,
+,
+,
+HumanMessage,write a reply letter for received Feedback: Thank you for taking the time to provide feedback about your experience with [Company Name]. We have received your comments and our team is reviewing them carefully. Your input is valuable to us as we strive to continuously improve our products and services. We appreciate you sharing your thoughts with us.
+AIMessage,write thank you letter
+HumanMessage,Acknowledgement letter of Received Donation: We are writing to acknowledge receipt of your generous donation to [Charitable Organization]. Your contribution of [Donation Amount] will make a significant impact on our ability to [Describe Impact]. Thank you for your support and we are grateful for your commitment to our cause.
+AIMessage,write thank you letter
+HumanMessage,letter for telling "Thank you for your recent order with [Company Name]. We have received your order for [Product/Service Description] and are processing it now. You can expect your order to be shipped within the next [X] business days. Please let us know if you have any other questions or concerns".
+AIMessage,write thank you letter
+HumanMessage,Acknowledgement letter For Donation: Thanking a donor for their generous contribution. Recognizing the impact of their donation and providing information on how the donation will be used.
+AIMessage,write thank you letter
+HumanMessage,Generate a very shot letter for saying "Thank You for Attending Our Event: Expressing gratitude to attendees for participating in a company event acknowledging their presence and highlighting key moments from the event that made it successful."
+AIMessage,write thank you letter
+HumanMessage,Formal letter for thanking all job applicants for their interest in a position acknowledging the time and effort put into the application and informing them about the next steps in the hiring process.
+AIMessage,write thank you letter
+HumanMessage,Personalized letter for thanking customers for making a purchase expressing appreciation for their business and offering assistance with any post-purchase inquiries or feedback.
+AIMessage,write thank you letter
+,
+,
+,
+HumanMessage,Write a letter for saying "We have received your resignation letter and we acknowledge your decision to leave [Company Name]. We appreciate the [Duration of Employment] you have dedicated to our organization and we wish you the best in your future endeavors. Please let us know if there is anything we can do to assist with the transition."
+AIMessage,write acceptance letter
+HumanMessage,generate a letter of acknowledgement in reply of the Received Invitation: Thank you for the invitation to [Event Name] on [Date]. We have received your invitation and are reviewing the details. We look forward to the opportunity to attend and [Describe Anticipated Participation]. Please let us know if you require any additional information from us.
+AIMessage,write acceptance letter
+HumanMessage,I an accepting a job offer. Expressing excitement about joining the company; thanking the hiring manager for the opportunity and confirming the start date; salary and any other details. in the letter. Write it for me.
+AIMessage,write acceptance letter
+HumanMessage,make a draft letter. Confirming the acceptance of a conference proposal through the letter; thanking the organizers for their decision and providing any additional information needed for the presentation or workshop.
+AIMessage,write acceptance letter
+HumanMessage,Write a professional looking letter on: Acceptance of Scholarship Award: Acknowledging acceptance of a scholarship award; expressing gratitude for the financial support and confirming the terms and conditions of the award.
+AIMessage,write acceptance letter
+HumanMessage,letter for Acceptance of Membership Application: "Welcoming a new member to the organization confirming their acceptance and providing details on membership benefits & upcoming events and resources".
+AIMessage,write acceptance letter
+HumanMessage,Generate a Beautiful Professional looking letter of Acceptance of Research Collaboration: Acknowledging acceptance of a research collaboration proposal expressing enthusiasm for the project and outlining the next steps in the research process including timelines and communication channels.
+AIMessage,write acceptance letter
+HumanMessage,Write a straight forward letter on "Acceptance of Speaking Engagement. Confirming acceptance of a speaking engagement. Thanking the organizers for the invitation and providing any necessary information regarding the presentation topic and format and logistics."
+AIMessage,write acceptance letter
+,
+,
+,
+HumanMessage,Show me a formal letter for apologizing for a delayed order due to unforeseen circumstances offering a discount or expedited shipping and assuring the customer of their commitment to timely delivery.
+AIMessage,write apology letter
+HumanMessage,Write a letter with subject "Incorrect Order Fulfillment". Content topic is "Apologizing for sending the wrong item; offering a full refund or replacement and expressing regret for the inconvenience caused"
+AIMessage,write apology letter
+HumanMessage,Apologizing for a damaged product received by a customer through letter; offering a replacement or refund and outlining the steps taken to prevent similar occurrences.
+AIMessage,write apology letter
+HumanMessage,Letter for strongly apologizing for a negative interaction with a customer service representative offering a discount or compensation for the inconvenience and assuring the customer of their commitment to professional service.
+AIMessage,write apology letter
+HumanMessage,Generate a letter on "Website Technical Issue: Apologizing for a technical issue on the website that prevented a customer from completing a purchase; offering a discount or gift card for their next purchase and assuring them that the issue is being addressed"
+AIMessage,write apology letter
+HumanMessage,Give me a Apology Letter for missing an important meeting due to a scheduling conflict or unforeseen circumstances; offering to reschedule and expressing regret for any inconvenience caused.
+AIMessage,write apology letter
+HumanMessage,letter for: Missed Deadline. Apologizing for failing to meet a deadline explaining the reasons for the delay and outlining the steps being taken to ensure timely completion of future tasks.
+AIMessage,write apology letter
+HumanMessage,A quick apology letter for a communication breakdown that led to a misunderstanding or conflict acknowledging the importance of clear communication and assuring the recipient of your commitment to effective communication in the future.
+AIMessage,write apology letter
+HumanMessage,Apology letter for unprofessional behavior at work acknowledging the impact of your actions and assuring your colleagues of your commitment to maintaining a professional demeanor.
+AIMessage,write apology letter
+HumanMessage,Apologizing for having to cancel plans at the last minute explaining the reason for the cancellation and offering to reschedule at a later date through a simple formal letter.
+AIMessage,write apology letter
+,
+,
+,
+HumanMessage,Draft a letter on Graduation Congratulations: Congratulations on your recent graduation from Oakwood University! Your hard work and dedication have paid off and we are proud to see you reach this milestone. We wish you all the best in your future endeavors.
+AIMessage,write congratulation letter
+HumanMessage,Congratulation Letter to My Best Friend: Congratulations on your well-deserved promotion to the position of Marketing Manager at ABC Corporation. Your exceptional performance and contributions to the team have not gone unnoticed and we are confident in your ability to excel in this new role.
+AIMessage,write congratulation letter
+HumanMessage,Letter for Congratulations on the successful expansion of your small business; Rosewood Boutique. Your entrepreneurial spirit and commitment to providing exceptional customer service have truly paid off. We wish you continued success in this new chapter.
+AIMessage,write congratulation letter
+HumanMessage,Letter for Retirement: Congratulations on your retirement after 35 years of dedicated service at XYZ Company. You have left an indelible mark on the organization and your colleagues will miss your expertise and leadership. Enjoy this well-deserved next phase of your life.
+AIMessage,write congratulation letter
+HumanMessage,Letter on Marriage: Congratulations to the newlyweds; Sarah and Michael Thompson! We are overjoyed to celebrate your union and wish you a lifetime of love and happiness and adventure together.
+AIMessage,write congratulation letter
+,
+,
+,
+HumanMessage,Write down Letter of Intent: Outline the applicant's academic and professional goals; their motivation for pursuing a particular program and how their background and experiences make them a strong candidate.
+AIMessage,write academic letter
+HumanMessage,Write Letter to Request a deferral of admission to a program providing a valid explanation and a proposed timeline for when the applicant plans to enroll.
+AIMessage,write academic letter
+HumanMessage,Write down a Professional Letter to Inform the institution of the applicant's decision to withdraw from a program and provide any necessary details or explanations.
+AIMessage,write academic letter
+HumanMessage,Write a letter for me on "Letter of Appeal: Request a reconsideration of a decision; such as a denial of admission or a grade dispute and present a compelling case for why the decision should be reconsidered."
+AIMessage,write academic letter
+HumanMessage,Generate a letter for me: "Letter of Grievance: Address a specific issue or concern within the academic environment such as a conflict with a professor or a perceived unfair policy and request a resolution."
+AIMessage,write academic letter
+HumanMessage,Give me a letter on: "Letter of Nomination: Nominate a student and faculty member or program for an academic award or recognition. Highlighting their achievements and contributions"
+AIMessage,write academic letter
+HumanMessage,Letter of Endorsement: Provide a strong endorsement for a student; colleague or program; emphasizing their qualifications and the reasons why they deserve support or consideration.
+AIMessage,write academic letter
+HumanMessage,Letter of Condolence: Offer condolences and support to a member of the academic community who has experienced a personal loss or tragedy.
+AIMessage,write academic letter
+,
+,
+,
+HumanMessage,Letter of Recommendation for Professional Development Opportunity: Support a faculty member's or staff member's application for a professional development program such as a workshop-conference or training; emphasizing the potential benefits to their growth and the institution.
+AIMessage,write recommendation letter
+HumanMessage,Letter of Recommendation for Academic Award or Honor: Highlight a student's or colleague's exceptional achievements; recognizing their dedication; intellectual abilities and the impact of their work.
+AIMessage,write recommendation letter
+HumanMessage,Letter for Recommending myself for Internship or Co-op Program: Vouch for a student's readiness and enthusiasm for a specific internship or co-op opportunity emphasizing their relevant skills and experiences.
+AIMessage,write recommendation letter
+HumanMessage,Recommending for Student Leadership Position: Highlight a student's leadership skills; initiative and commitment to the academic community; supporting their application for a student government or club leadership role. Draft a beautifull letter for it!
+AIMessage,write recommendation letter
+HumanMessage,Letter of Recommendation for Graduate School Admission: Provide a detailed evaluation of a student's academic performance & research experience and personal qualities that make them a strong candidate for a graduate program
+AIMessage,write recommendation letter
+HumanMessage,Letter of Recommendation for Tenure: Provide a comprehensive evaluation of a faculty member's teaching; research and service contributions supporting their case for tenure.
+AIMessage,write recommendation letter
+,
+,
+,
+HumanMessage,Write Wedding Invitation: Cordially invite you to witness the union of Sarah Johnson and Michael Thompson on August 15th-2024 at the Rosewood Gardens. A reception will follow at the Grand Ballroom.
+AIMessage,write invitation
+HumanMessage,Beautifully draft Corporate Event Invitation: You are invited to attend our annual corporate gala on September 20th; 2024; at the Ritz-Carlton Hotel. This black-tie event will feature keynote speakers; networking opportunities and a charity auction.
+AIMessage,write invitation
+HumanMessage,Compose Graduation Ceremony Invitation: We take great pleasure in inviting you to the graduation ceremony of your grandchild; Emily Davis; from Oakwood University on May 12th; 2024. The ceremony will be held at the university's main auditorium.
+AIMessage,write invitation
+HumanMessage,Write Housewarming Party Invitation Card: Join us for a housewarming party on July 8th-2024; at our new home; 123 Maple Street to celebrate our recent move. Refreshments and light snacks will be served.
+AIMessage,write invitation
+HumanMessage,Pinac Prepare Invitaion for Retirement Party: Please join us in celebrating the retirement of our esteemed colleague; Mr. John Smith; after 30 years of dedicated service. The party will be held on October 5th; 2024 at the Grand Ballroom.
+AIMessage,write invitation
+HumanMessage,Prepare Book Launch Invitaion Card: Celebrate the release of "The Eternal Flame" by renowned author Emily Davis on August 20th; 2024 at the Oakwood Bookstore. The author will be present for a book signing and Q&A session.
+AIMessage,write invitation
+HumanMessage,Invitation of Art Exhibition: You are cordially invited to the opening night of the "Impressions of Nature" art exhibition by local artist Sarah Thompson on September 15th/2024 at the Rosewood Gallery. Generate it for me!
+AIMessage,write invitation
