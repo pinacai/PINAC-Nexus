@@ -2,7 +2,7 @@
 
 <h1 style="border-bottom: none">
     <b><a href="https://github.com/pinacai">PINAC-Nexus</a></b><br>
-    The Server Behind PINAC Workspace
+    Uplifting the AI Generated Text Quality
 </h1>
 
 <img src="https://github.com/pinacai/PINAC-Nexus/blob/main/assets/header.png" alt="header image">
@@ -14,9 +14,25 @@
 ![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
 [![View Repositories](https://img.shields.io/badge/View-Our_Repositories-blue?logo=GitHub)](https://github.com/pinacai?tab=repositories)
 
-A powerful & capable server to power PINAC Workspace. Written in python.
+A simple to use framework for getting high quality text for different task using AI.  
+Inspired by <a href="https://github.com/danielmiessler/fabric">Fabric</a>. Taking it to the next level !
+
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 </div>
+
+## Why PINAC-Nexus ?
+May be you are like me, not a prompt engineer, neither like to write long prompt for a simple task but still we deserve the best result. So, I made this console tool so that you can tell your need in short and simple words and this tool will generate the best result for you!
+
+Inspired by <a href="https://github.com/danielmiessler/fabric">Fabric</a> but making it even better, removing the need of remembering particular command, making simple to use.
+
+If you want a cool Desktop app with this tool, visit our App <a href="https://github.com/pinacai/PINAC_Workspace">**PINAC Workspace**</a>. I am sure it will make you day.
+
+
+## System Design
+
+<img src="https://github.com/pinacai/PINAC-Nexus/blob/main/assets/system%20design.svg" alt="System Design Diagram">
+
 
 ##  🚀 Project Setup
 Follow these few steps to set up the server for **PINAC Workspace** on your system:
