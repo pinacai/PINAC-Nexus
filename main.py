@@ -1,6 +1,4 @@
-from flask import Flask
-from flask_socketio import SocketIO
-from functools import cache
+import inquirer
 from ai_models.ChatGPT import ChatGPT_3_5
 from ai_models.Gemini import Gemini_1_5_Pro, Gemini_1_Pro, Gemini_1_5_Flash
 from prompts.prompt import givePrompt
@@ -41,7 +39,6 @@ def createResponse(AiModel, query, prompt_name, response_type):
         return ai_response
 
 
-@cache
 def giveAiResponseArray(AiModel, query):
     chatHistory.append(HumanMessage(content=query))
     ai_response = AiModel.classifyTaskCategory(query)
@@ -99,15 +96,59 @@ def processClientRequest(request: dict):
     return response
 
 
-app = Flask(__name__)
-socketio = SocketIO(app)
-
-
-@socketio.on("message")
-def handle_message(requestData):
-    serverResponse = processClientRequest(dict(requestData))
-    socketio.emit("message-reply", serverResponse)
-
-
 if __name__ == "__main__":
-    socketio.run(app, allow_unsafe_werkzeug=True, debug=False)
+    print()
+    print()
+    print(
+        "  0101010101  01  0101      01  0101010101  0101010101       0101      01  01010101  01      01  01       01  0101010101  "
+    )
+    print(
+        "  01      01  01  01 01     01  01      01  01               01 01     01  01         01    01   01       01  01          "
+    )
+    print(
+        "  01      01  01  01  01    01  01      01  01               01  01    01  01          01  01    01       01  01          "
+    )
+    print(
+        "  0101010101  01  01   01   01  0101010101  01        010101 01   01   01  01010101     0101     01       01  0101010101  "
+    )
+    print(
+        "  01          01  01    01  01  01      01  01               01    01  01  01          01  01    01       01          01  "
+    )
+    print(
+        "  01          01  01     01 01  01      01  01               01     01 01  01         01    01   01       01          01  "
+    )
+    print(
+        "  01          01  01      0101  01      01  0101010101       01      0101  01010101  01      01  01010101001  0101010101  "
+    )
+    print()
+    print()
+
+    questions = [
+        inquirer.List(
+            "model",
+            message="What AI Model You Want to Use?",
+            choices=[
+                "ChatGPT-3.5 turbo",
+                # "Gemini 1.0 Pro",
+                # "Gemini 1.5 Pro",
+                "Gemini Flash 1.5",
+            ],
+        ),
+    ]
+    answer = inquirer.prompt(questions)
+    print(answer["model"])
+    print("type '/bye' to exit")
+    print()
+    while True:
+        query = input(">>> ")
+        if query == "/bye":
+            break
+        else:
+            response = processClientRequest(
+                {
+                    "request_type": "user-input",
+                    "preferred_model": answer["model"],
+                    "user_query": query,
+                }
+            )
+            print(response["response"]["content"])

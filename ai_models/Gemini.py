@@ -15,7 +15,6 @@ output_parser = StrOutputParser()
 # Datasets
 TCC_Dataset = prepareDatasetWithoutSystemMessage("ai_models/dataset/TCC_Dataset.csv")
 CAIT_Dataset = prepareDatasetWithoutSystemMessage("ai_models/dataset/CAIT_Dataset.csv")
-TNR_Dataset = prepareDatasetWithoutSystemMessage("ai_models/dataset/TNR_Dataset.csv")
 
 
 class Gemini:
@@ -23,12 +22,10 @@ class Gemini:
     def __init__(self):
         self.taskClassificationPrompt = ChatPromptTemplate.from_messages(TCC_Dataset)
         self.generalAssistantPrompt = ChatPromptTemplate.from_messages(CAIT_Dataset)
-        self.nameRecognitionPrompt = ChatPromptTemplate.from_messages(TNR_Dataset)
 
     def chainInitializer(self, llm):
         self.taskClassificationChain = self.taskClassificationPrompt | llm | output_parser
         self.generalAssistantChain = self.generalAssistantPrompt | llm | output_parser
-        self.nameRecognitionChain = self.nameRecognitionPrompt | llm | output_parser
 
     # For classifying the user query into specific task category
     def classifyTaskCategory(self, user_input):
@@ -39,7 +36,7 @@ class Gemini:
             response = {"error_occurred": True, "category": None, "error": str(e)}
         return response
 
-    # General & specialised task assistance
+    # General & specialized task assistance
     def generalAssistant(self, user_input, chatHistory):
         try:
             # Extend the chat prompt with the previous chat history
@@ -52,15 +49,6 @@ class Gemini:
         except Exception as e:
             response = {"error_occurred": True, "response": None, "error": str(e)}
 
-        return response
-
-    # For Google contact automation, we need to extract and return names from the query
-    def findName(self, user_input):
-        try:
-            aiResponse = self.nameRecognitionChain.invoke({"text": user_input})
-            response = {"error_occurred": False, "response": aiResponse, "error": None}
-        except Exception as e:
-            response = {"error_occurred": True, "response": None, "error": str(e)}
         return response
 
 
@@ -80,9 +68,6 @@ class Gemini_1_5_Pro:
     def generalAssistant(self, user_input, chatHistory):
         return self.Gemini.generalAssistant(user_input, chatHistory)
 
-    def findName(self, user_input):
-        return self.Gemini.findName(user_input)
-
 
 # Only text input
 # >>>   Natural language tasks, multi-turn text and code chat, and code generation
@@ -98,9 +83,6 @@ class Gemini_1_Pro:
 
     def generalAssistant(self, user_input, chatHistory):
         return self.Gemini.generalAssistant(user_input, chatHistory)
-
-    def findName(self, user_input):
-        return self.Gemini.findName(user_input)
 
 
 # Text, Img & Video Input
@@ -118,6 +100,3 @@ class Gemini_1_5_Flash:
 
     def generalAssistant(self, user_input, chatHistory):
         return self.Gemini.generalAssistant(user_input, chatHistory)
-
-    def findName(self, user_input):
-        return self.Gemini.findName(user_input)

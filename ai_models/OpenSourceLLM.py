@@ -9,37 +9,29 @@ output_parser = StrOutputParser()
 # Datasets
 TCC_Dataset = prepareDataset("ai_models/dataset/TCC_Dataset.csv")
 CAIT_Dataset = prepareDataset("ai_models/dataset/CAIT_Dataset.csv")
-TNR_Dataset = prepareDataset("ai_models/dataset/TNR_Dataset.csv")
 
 class OpenSourceLLM:
 
     def __init__(self) -> None:
         self.taskClassificationPrompt = ChatPromptTemplate.from_messages(TCC_Dataset)
         self.generalAssistantPrompt = ChatPromptTemplate.from_messages(CAIT_Dataset)
-        self.nameRecognitionPrompt = ChatPromptTemplate.from_messages(TNR_Dataset)
 
     def chainInitializer(self, llm):
         self.taskClassificationChain = self.taskClassificationPrompt | llm | output_parser
         self.generalAssistantChain = self.generalAssistantPrompt | llm | output_parser
-        self.nameRecognitionChain = self.nameRecognitionPrompt | llm | output_parser
     
     # For classifying the user query into specific task category
     def classifyTaskCategory(self, user_input):
         response = self.taskClassificationChain.invoke({"text": user_input})
         return response
 
-    # General & specialised task assistance
+    # General & specialized task assistance
     def generalAssistant(self, user_input, chatHistory):
         # Extend the chat prompt with the previous chat history
         self.generalAssistantPrompt.extend(chatHistory)
         # Append the current query to the chat prompt
         self.generalAssistantPrompt.append(user_input)
         response = self.generalAssistantChain.invoke({"text": user_input})
-        return response
-
-    # For Google contact automation, we need to extract and return names from the query
-    def findName(self, user_input):
-        response = self.nameRecognitionChain.invoke({"text": user_input})
         return response
 
 
@@ -62,10 +54,6 @@ class Gemma_2b:
     def generalAssistant(self, user_input, chatHistory):
         return self.gemma_2b.generalAssistant(user_input, chatHistory)
 
-    def findName(self, user_input):
-        return self.gemma_2b.findName(user_input)
-
-
 
 
 # --------------------------------------------------------------------------------- #
@@ -86,6 +74,3 @@ class Llama_8b:
 
     def generalAssistant(self, user_input, chatHistory):
         return self.llama_8b.generalAssistant(user_input, chatHistory)
-
-    def findName(self, user_input):
-        return self.llama_8b.findName(user_input)
