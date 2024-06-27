@@ -48,24 +48,7 @@ def giveAiResponseArray(AiModel, query):
         #
         if ai_response["category"] == "compose complaint email":
             response = createResponse(AiModel, query, "complaint email", "email")
-
-        elif ai_response["category"] == "compose formal request email":
-            response = createResponse(AiModel, query, "formal request email", "email")
-
-        elif ai_response["category"] == "compose inquiry email":
-            response = createResponse(AiModel, query, "inquiry email", "email")
-
-        elif ai_response["category"] == "compose formal proposal or suggestion email":
-            response = createResponse(
-                AiModel, query, "formal proposal or suggestion email", "email"
-            )
-
-        elif ai_response["category"] == "compose acknowledgment email":
-            response = createResponse(AiModel, query, "acknowledgment email", "email")
-
-        elif ai_response["category"] == "compose informal email":
-            response = createResponse(AiModel, query, "informal email", "email")
-
+        #
         else:
             response = createResponse(AiModel, query, "others", "others")
 
